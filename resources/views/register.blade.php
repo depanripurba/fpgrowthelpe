@@ -3,7 +3,7 @@
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Halaman Login</title>
+    <title>Register Page</title>
 
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -67,22 +67,21 @@
   <body class="login-page bg-body-secondary">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../index2.html">LOGIN</a>
+        <a href="../index2.html">REGISTER SEBUAH USER</a>
       </div>
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
 
-          <form action="../index3.html" method="post">
+          <form action="{{'/registered'}}" method="post">
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email" />
+              <input type="username" class="form-control" placeholder="username" name="username" />
               <div class="input-group-text">
                 <span class="bi bi-envelope"></span>
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password" />
+              <input type="password" class="form-control" placeholder="Password" name="password"/>
               <div class="input-group-text">
                 <span class="bi bi-lock-fill"></span>
               </div>
