@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\RegisterControler;
+use App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('layout.admin');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/', function () {
-    return view('welcome');
-});
+// bagian login user
+Route::get('/login', [Login::class,'index']);
+Route::post('/validate', [Login::class,'Validasi_login']);
 
-Route::get('/register', [RegisterControler::class,'index']);
+
+
+// bagian registrasi user
+Route::get('/register', [Login::class,'register']);
+Route::post('/registered', [Login::class,'registered']);
+
 

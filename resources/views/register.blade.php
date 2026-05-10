@@ -74,6 +74,7 @@
         <div class="card-body login-card-body">
 
           <form action="{{'/registered'}}" method="post">
+            @csrf
             <div class="input-group mb-3">
               <input type="username" class="form-control" placeholder="username" name="username" />
               <div class="input-group-text">

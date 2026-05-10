@@ -2,16 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Login as ModelsLogin;
 use Illuminate\Http\Request;
 
-class RegisterControler extends Controller
+class Login extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       return view('register');
+        return view('login');
+    }
+
+    public function Validasi_login()
+    {
+       echo "halaman ini akan memvalidasi inputan";
+    }
+
+    // register a user
+    public function register(){
+        return view('register');
+    }
+    // insert to table
+    public function registered(Request $request){
+        ModelsLogin::create([
+             'username'=>$request->username,
+             'password'=>bcrypt($request->password)
+        ]);
+
+        echo $request->username;
     }
 
     /**
