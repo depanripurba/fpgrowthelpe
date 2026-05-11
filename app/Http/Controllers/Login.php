@@ -15,9 +15,25 @@ class Login extends Controller
         return view('login');
     }
 
-    public function Validasi_login()
+    public function Validasi_login(Request $request)
     {
-       echo "halaman ini akan memvalidasi inputan";
+       // 1. Validasi input
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        // 2. Coba login
+        if (ModelsLogin::attempt($credentials)) {
+            $request->session()->regenerate(); // Mencegah session fixation
+
+            return redirect()->intended('dashboard');
+        }
+
+        // 3. Jika gagal
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->onlyInput('email');
     }
 
     // register a user
