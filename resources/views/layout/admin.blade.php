@@ -343,7 +343,7 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a href="./generate/theme.html" class="nav-link">
+                <a href="/logout" class="nav-link">
                   <i class="nav-icon bi-pencil-square"></i>
                   <p>Log Out</p>
                 </a>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Login as ModelsLogin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class Login extends Controller
 {
@@ -17,34 +19,46 @@ class Login extends Controller
 
     public function Validasi_login(Request $request)
     {
-       // 1. Validasi input
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        // 2. Coba login
-        if (ModelsLogin::attempt($credentials)) {
-            $request->session()->regenerate(); // Mencegah session fixation
-
-            return redirect()->intended('dashboard');
+        // 1. cari data dengan username di database
+        $user = ModelsLogin::where('username', $request->username)->first();
+        // 2. jika ada cek password
+        if ($user != null) {
+            if (Hash::check($request->password, $user->password)) {
+                //   Password COCOK
+                $request->session()->regenerate();
+                Auth::login($user);
+                return redirect()->intended('/');
+            } else {
+                // Password SALAH
+                return back()->withErrors([
+                    'email' => 'Password Salah',
+                ])->withInput($request->only('username'));
+            }
+        } else {
+            return back()->withErrors(['email' => 'Usertidak terdaftar'])->withInput($request->only('username'));
         }
-
-        // 3. Jika gagal
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->onlyInput('email');
     }
 
     // register a user
-    public function register(){
+    public function register()
+    {
         return view('register');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
+
     // insert to table
-    public function registered(Request $request){
+    public function registered(Request $request)
+    {
         ModelsLogin::create([
-             'username'=>$request->username,
-             'password'=>bcrypt($request->password)
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
         ]);
 
         echo $request->username;

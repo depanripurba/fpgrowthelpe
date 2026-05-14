@@ -76,14 +76,19 @@
 
           <form action="/validate" method="post">
             @csrf
+            @error('email')
+            <div class="alert alert-danger alert-dismissible">
+              Username atau password salah
+            </div>
+            @enderror
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="usernmae" />
+              <input type="text" class="form-control" name="username" placeholder="username" value="{{ old('username') }}" />
               <div class="input-group-text">
                 <span class="bi bi-envelope"></span>
               </div>
             </div>
             <div class="input-group mb-3">
-              <input type="password" class="form-control" placeholder="Password" />
+              <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" />
               <div class="input-group-text">
                 <span class="bi bi-lock-fill"></span>
               </div>
