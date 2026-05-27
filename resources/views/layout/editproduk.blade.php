@@ -8,7 +8,7 @@
             <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h3 class="mb-0">Tambah Produk</h3>
+                <h3 class="mb-0">Edit Data Produk</h3>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
@@ -27,24 +27,25 @@
           <!--begin::Container-->
         <div class="container-fluid">
          
-          <div class="card card-primary card-outline mb-4 col-md-6">
+          <div class="card card-danger card-outline mb-4 col-md-6">
                   <!--begin::Header-->
                   <div class="card-header">
                     <div class="card-title">Silahkan Tambah Produk</div>
                   </div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form action="/tambahkankedb" method="POST">
+                  <form action="/updateproduk" method="POST">
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
                         <label for="kodeproduk" class="form-label">Kode Produk</label>
-                        <input name="kodeproduk" type="text" class="form-control" id="kodeproduk" />
+                        <input name="id" type="hidden" class="form-control" id="id" value="{{ $data->id }}"/>
+                        <input name="kodeproduk" type="text" class="form-control" id="kodeproduk" value="{{ $data->kode_produk }}"/>
                       </div>
                       <div class="mb-3">
                         <label for="namaproduk" class="form-label">Nama Produk</label>
-                        <input name="namaproduk" type="text" class="form-control" id="namaproduk" />
+                        <input name="namaproduk" type="text" class="form-control" id="namaproduk" value="{{ $data->nama_produk }}" />
                       </div>
                      
                       
@@ -52,8 +53,8 @@
                     <!--end::Body-->
                     <!--begin::Footer-->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Tambahkan</button>
-                       <a href="/produk" type="submit" class="btn btn-warning">Kembali</a>
+                      <button type="submit" class="btn btn-primary">Update Data</button>
+                      <a href="/produk" type="submit" class="btn btn-warning">Kembali</a>
                     </div>
                     <!--end::Footer-->
                   </form>

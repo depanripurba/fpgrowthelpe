@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Login;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TransaksiControler;
 use Illuminate\Support\Facades\Route;
 
 // bagian login user
@@ -18,9 +19,22 @@ Route::middleware(['auth'])->group(function () {
         return view('layout.dasboard');
     });
     Route::get('/logout', [Login::class, 'logout']);
+    // start bagian halaman produk
     Route::get('/produk', [ProdukController::class, 'index']);
     Route::get('/tambahproduk', [ProdukController::class, 'tambahproduk']);
     Route::POST('/tambahkankedb', [ProdukController::class, 'Tambahkankedb']);
+    Route::get('/editproduk/{id}', [ProdukController::class, 'Editproduk']);
+    Route::post('/updateproduk', [ProdukController::class, 'Updatedata']);
+    Route::get('/hapusdataproduk/{id}', [ProdukController::class, 'hapusdataproduk']);
+    // end dari halaman produk
 
-    // Tambahkan route lainnya di sini...
+    // start halaman transaksi
+    Route::get('/transaksi', [TransaksiControler::class, 'index']);
+    Route::get('/tambahtransaksi', [TransaksiControler::class, 'Tambahtransaksi']);
+    Route::post('/tambahkantrankedb', [TransaksiControler::class, 'Tambahkankedb']);
+    Route::get('/editdatatransaksi/{id}', [TransaksiControler::class, 'Edittransaksi']);
+    Route::get('/updatetransaksi', [TransaksiControler::class, 'Edittransaksi']);
+    Route::get('/hapusdatatransaksi/{id}', [TransaksiControler::class, 'hapusdatatransaksi']);
+    // end halaman transaksi
+
 });

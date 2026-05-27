@@ -89,10 +89,10 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="#" class="nav-link">Data Produk</a>
+              <a href="#" class="nav-link"></a>
             </li>
             <li class="nav-item d-none d-md-block">
-              <a href="#" class="nav-link">Contact</a>
+              <a href="#" class="nav-link"></a>
             </li>
           </ul>
           <!--end::Start Navbar Links-->
@@ -239,22 +239,22 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="./assets/img/user2-160x160.jpg"
+                  src="{{asset('/dist')}}/assets/img/user2-160x160.jpg"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
-                <span class="d-none d-md-inline">Alexander Pierce</span>
+                <span class="d-none d-md-inline"></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="./assets/img/user2-160x160.jpg"
+                    src="{{asset('/')}}dist/assets/img/user2-160x160.jpg"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
                   <p>
-                    Alexander Pierce - Web Developer
+                    {{ auth()->user()->username }}
                     <small>Member since Nov. 2023</small>
                   </p>
                 </li>
@@ -279,7 +279,7 @@
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
                   <a href="#" class="btn btn-outline-secondary">Profile</a>
-                  <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                  <a href="/logout" class="btn btn-outline-danger float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
               </ul>
@@ -331,9 +331,9 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a href="./generate/theme.html" class="nav-link">
+                <a href="/transaksi" class="nav-link">
                   <i class="nav-icon bi bi-palette"></i>
-                  <p>Data Transaksi Lanjutan</p>
+                  <p>Data Transaksi</p>
                 </a>
               </li>
                <li class="nav-item">

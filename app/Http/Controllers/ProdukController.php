@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $pro = Produk::all();
-        return view('layout.produk',['produks' => $pro]);
+        return view('layout.produk', ['produks' => $pro]);
     }
 
     public function Tambahproduk()
@@ -30,51 +27,27 @@ class ProdukController extends Controller
         return redirect()->intended('/produk');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function Editproduk($id)
     {
-        //
+        $pro = Produk::find($id);
+        return view('layout.editproduk', ['data' => $pro]);
+    }
+    public function Updatedata(Request $request)
+    {
+        $pro = Produk::findOrFail($request->id);
+        $pro->kode_produk = $request->kodeproduk;
+        $pro->nama_produk = $request->namaproduk;
+        $pro->save();
+
+        return redirect()->intended('/produk');
+    }
+    public function hapusdataproduk($id)
+    {
+        Produk::destroy($id);
+        return redirect()->intended('/produk');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Produk $produk)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Produk $produk)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Produk $produk)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Produk $produk)
-    {
-        //
-    }
 }
