@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Login;
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
 // bagian login user
@@ -14,9 +15,12 @@ Route::post('/registered', [Login::class, 'registered']);
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
-        return view('layout.admin');
+        return view('layout.dasboard');
     });
     Route::get('/logout', [Login::class, 'logout']);
+    Route::get('/produk', [ProdukController::class, 'index']);
+    Route::get('/tambahproduk', [ProdukController::class, 'tambahproduk']);
+    Route::POST('/tambahkankedb', [ProdukController::class, 'Tambahkankedb']);
 
     // Tambahkan route lainnya di sini...
 });
