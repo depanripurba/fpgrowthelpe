@@ -33,8 +33,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambahtransaksi', [TransaksiControler::class, 'Tambahtransaksi']);
     Route::post('/tambahkantrankedb', [TransaksiControler::class, 'Tambahkankedb']);
     Route::get('/editdatatransaksi/{id}', [TransaksiControler::class, 'Edittransaksi']);
-    Route::get('/updatetransaksi', [TransaksiControler::class, 'Edittransaksi']);
+    Route::post('/updatetransaksi', [TransaksiControler::class, 'Updatedata']);
     Route::get('/hapusdatatransaksi/{id}', [TransaksiControler::class, 'hapusdatatransaksi']);
     // end halaman transaksi
+
+    // start bagian itemset
+    Route::get('/itemset', [TransaksiControler::class, 'itemSet']);
+    // end bagian itemset
 
 });

@@ -36,6 +36,7 @@
                   <!--begin::Form-->
                   <form action="/updatetransaksi" method="POST">
                     @csrf
+                    <input name="id" type="hidden" class="form-control" value={{ $data->id }} id="tanggaltransaksi" />
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
