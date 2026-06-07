@@ -12,8 +12,39 @@ class Fpgrowth extends Controller
 
     public function index()
     {
+
         $pro = Produk::all();
-        return view('layout.frekuensiitemset', ['produks' => $pro,'text'=>'fpg']);
+        $trans = Transaksi::all();
+        $totaltrans = Transaksi::count();
+
+        $transaksi = [];
+        foreach ($trans as $tr) {
+            $array = Str::of($tr->kode_transaksi)->explode(',');
+            $transaksi[] = $array;
+        }
+        // end ubah transaksi jadi array
+        $kirimdata = [];
+        foreach ($pro as $p) {
+            $itemcount = 0;
+            $nomor = 0;
+            foreach ($transaksi as $cek) {
+                foreach($cek as $k){
+                    if($k===$p->kode_produk){
+                        $itemcount++;
+                    }
+                }
+            }
+            $part = [
+                'no' => $nomor,
+                'frekuensi' => $itemcount,
+                'support' => round(($itemcount / $totaltrans)*100,3),
+                'kode_produk' => $p->kode_produk,
+                'nama_produk' => $p->nama_produk
+
+            ];
+            $kirimdata[] = $part;
+        }
+        return view('layout.frekuensiitemset', ['produks' => json_decode(json_encode($kirimdata)), 'text' => 'fpg','totaltransaksi'=>$totaltrans]);
     }
 
     public function Tambahtransaksi()
@@ -87,7 +118,7 @@ class Fpgrowth extends Controller
 
         dump($combinations);
         // end pembentukan item set
-       
+
 
 
         // bagian untuk cek kesamaan array

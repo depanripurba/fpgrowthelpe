@@ -32,7 +32,7 @@ class TransaksiControler extends Controller
     public function Edittransaksi($id)
     {
         $trans = Transaksi::find($id);
-        return view('layout.edittransaksi', ['data' => $trans]);
+        return view('layout.edittransaksi', ['data' => $trans,'text'=>'transaksi']);
     }
     public function Updatedata(Request $request)
     {

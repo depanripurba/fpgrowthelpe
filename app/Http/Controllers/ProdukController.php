@@ -30,7 +30,7 @@ class ProdukController extends Controller
     public function Editproduk($id)
     {
         $pro = Produk::find($id);
-        return view('layout.editproduk', ['data' => $pro]);
+        return view('layout.editproduk', ['data' => $pro,'text'=>'produk']);
     }
     public function Updatedata(Request $request)
     {

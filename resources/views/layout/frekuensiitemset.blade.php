@@ -1,3 +1,4 @@
+
 @extends('layout.admin')
 @section('judul', 'Frekuensi Item Set')
 @section('konten')
@@ -41,7 +42,7 @@
                           <th style="text-align: center;">Kode Produk</th>
                           <th style="text-align: center;">Nama Produk</th>
                           <th style="text-align: center;">Frekuensi</th>
-                          <th style="text-align: center;">Support</th>
+                          <th style="text-align: center;">Support {{$totaltransaksi}} Transaksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -52,8 +53,8 @@
                           <td align="center">{{$nomor}}</td>
                           <td align="center" width="20%">{{$produk->kode_produk}}</td>
                           <td align="center">{{$produk->nama_produk}}</td>
-                          <td align="center">2</td>
-                          <td align="center">10%</td>
+                          <td align="center">{{$produk->frekuensi}}</td>
+                          <td align="center">{{$produk->support}} %</td>
                         </tr>
                         <?php $nomor++; ?>
                         @endforeach
