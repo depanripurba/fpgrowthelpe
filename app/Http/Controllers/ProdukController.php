@@ -15,7 +15,7 @@ class ProdukController extends Controller
 
     public function Tambahproduk()
     {
-        return view('layout.tambahproduk');
+        return view('layout.tambahproduk',['text'=>'produk']);
     }
 
     public function Tambahkankedb(Request $request)

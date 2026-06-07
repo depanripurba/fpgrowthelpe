@@ -17,7 +17,7 @@ class TransaksiControler extends Controller
 
     public function Tambahtransaksi()
     {
-        return view('layout.tambahtransaksi');
+        return view('layout.tambahtransaksi',['text'=>'transaksi']);
     }
 
     public function Tambahkankedb(Request $request)
