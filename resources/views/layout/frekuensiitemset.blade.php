@@ -1,6 +1,5 @@
 @extends('layout.admin')
-@section('judul', 'Halaman Produk')
-@section('text', 'produk')
+@section('judul', 'Frekuensi Item Set')
 @section('konten')
 <!--begin::App Content Header-->
         <div class="app-content-header">
@@ -39,9 +38,10 @@
                       <thead>
                         <tr>
                           <th style="width: 10px">No</th>
-                          <th>Kode Produk</th>
-                          <th>Nama Produk</th>
-                          <th>Action</th>
+                          <th style="text-align: center;">Kode Produk</th>
+                          <th style="text-align: center;">Nama Produk</th>
+                          <th style="text-align: center;">Frekuensi</th>
+                          <th style="text-align: center;">Support</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -49,13 +49,11 @@
                         @foreach ($produks as $produk)
                       
                         <tr class="align-middle">
-                          <td>{{$nomor}}</td>
-                          <td width="20%">{{$produk->kode_produk}}</td>
-                          <td>{{$produk->nama_produk}}</td>
-                          <td width="20%">
-                            <a href="/editproduk/{{ $produk->id }}" class="btn btn-primary">Edit</a>
-                            <button onclick="hapusData({{ $produk->id }},'{{ $produk->nama_produk  }}')" class="btn btn-danger">Hapus</button>
-                        </td>
+                          <td align="center">{{$nomor}}</td>
+                          <td align="center" width="20%">{{$produk->kode_produk}}</td>
+                          <td align="center">{{$produk->nama_produk}}</td>
+                          <td align="center">2</td>
+                          <td align="center">10%</td>
                         </tr>
                         <?php $nomor++; ?>
                         @endforeach

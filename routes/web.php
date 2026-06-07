@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Fpgrowth;
 use App\Http\Controllers\Login;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiControler;
@@ -38,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     // end halaman transaksi
 
     // start bagian itemset
-    Route::get('/itemset', [TransaksiControler::class, 'itemSet']);
+    Route::get('/frekuensiitemset', [Fpgrowth::class, 'index']);
     // end bagian itemset
 
 });

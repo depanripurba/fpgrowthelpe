@@ -325,26 +325,32 @@
             >
               
               <li class="nav-item">
-                <a href="/produk" class="nav-link">
+                <a href="/produk" class="nav-link {{ $text==='produk'?'active':'' }}">
                   <i class="nav-icon bi bi-palette"></i>
                   <p>Data Produk</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a href="/transaksi" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                <a href="/transaksi" class="nav-link {{ $text==='transaksi'?'active':'' }}">
+                  <i class="nav-icon bi bi-box-seam-fill"></i>
                   <p>Data Transaksi</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a href="/itemset" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
-                  <p>Item Set</p>
+                <a href="/frekuensiitemset" class="nav-link {{ $text==='fpg'?'active':'' }}"">
+                  <i class="nav-icon bi bi-ui-checks-grid"></i>
+                  <p>Frekuensi Item Set</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="/lanjutan" class="nav-link">
+                  <i class="nav-icon bi bi-box-arrow-in-right"></i>
+                  <p>Transaksi Lanjutan</p>
                 </a>
               </li>
                <li class="nav-item">
                 <a href="./generate/theme.html" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                  <i class="nav-icon bi bi-table"></i>
                   <p>Paket Promosi</p>
                 </a>
               </li>

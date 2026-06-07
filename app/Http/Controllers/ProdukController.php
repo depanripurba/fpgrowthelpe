@@ -10,7 +10,7 @@ class ProdukController extends Controller
     public function index()
     {
         $pro = Produk::all();
-        return view('layout.produk', ['produks' => $pro]);
+        return view('layout.produk', ['produks' => $pro,'text'=>'produk']);
     }
 
     public function Tambahproduk()

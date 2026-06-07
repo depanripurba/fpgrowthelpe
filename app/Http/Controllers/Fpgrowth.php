@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class TransaksiControler extends Controller
+class Fpgrowth extends Controller
 {
 
     public function index()
     {
-        $trans = Transaksi::all();
-        return view('layout.transaksi', ['transaksi' => $trans,'text'=>'transaksi']);
+        $pro = Produk::all();
+        return view('layout.frekuensiitemset', ['produks' => $pro,'text'=>'fpg']);
     }
 
     public function Tambahtransaksi()
