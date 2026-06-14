@@ -17,7 +17,7 @@ Route::post('/registered', [Login::class, 'registered']);
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
-        return view('layout.dasboard');
+        return view('layout.dasboard',['text'=>'dashboard']);
     });
     Route::get('/logout', [Login::class, 'logout']);
     // start bagian halaman produk

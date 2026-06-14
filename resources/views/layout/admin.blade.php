@@ -325,6 +325,12 @@
             >
               
               <li class="nav-item">
+                <a href="/" class="nav-link {{ $text==='dashboard'?'active':'' }}">
+                  <i class="nav-icon bi bi-ui-checks-grid"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/produk" class="nav-link {{ $text==='produk'?'active':'' }}">
                   <i class="nav-icon bi bi-palette"></i>
                   <p>Data Produk</p>

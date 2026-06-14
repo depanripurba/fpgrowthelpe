@@ -9,7 +9,7 @@
             <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h3 class="mb-0">Produk</h3>
+                <h3 class="mb-0">Frekuensi Itemset</h3>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
@@ -29,12 +29,11 @@
           <div class="container-fluid">
          <div class="card mb-4">
                   <div class="card-header">
-                    <h3 class="card-title">Data Produk</h3>
+                    <h3 class="card-title">Frekuensi Itemset</h3>
                   </div>
                   <!-- /.card-header -->
                   <div class="card-body">
-                    <a class="btn btn-primary mb-3" href="/tambahproduk">Tambah Produk</a>
-                    
+                   
                     <table class="table table-bordered">
                       <thead>
                         <tr>
