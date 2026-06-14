@@ -369,6 +369,12 @@
                <li class="nav-item">
                 <a href="/nilaiconfidence" class="nav-link {{ $text==='confidence'?'active':'' }}">
                   <i class="nav-icon bi bi-patch-check-fill"></i>
+                  <p>Nilai Confidence</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="/eliminasiconfidence" class="nav-link {{ $text==='elconfidence'?'active':'' }}">
+                  <i class="nav-icon bi bi-patch-check-fill"></i>
                   <p>Nilai Confidence 50 %</p>
                 </a>
               </li>

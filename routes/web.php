@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/duaitem', [Fpgrowth::class, 'duaitem']);
     Route::get('/minimumsuport', [Fpgrowth::class, 'minimumsuport']);
     Route::get('/nilaiconfidence', [Fpgrowth::class, 'nilaiconfidence']);
+    Route::get('/eliminasiconfidence', [Fpgrowth::class, 'eliminasiconfidence']);
 
     // end bagian itemset
 

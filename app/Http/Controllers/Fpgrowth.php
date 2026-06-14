@@ -43,11 +43,12 @@ class Fpgrowth extends Controller
 
             ];
             $kirimdata[] = $part;
-            return json_decode(json_encode($kirimdata));
         }
+        return json_decode(json_encode($kirimdata));
     }
     public function index()
     {
+        $totaltrans = Transaksi::count();
         return view('layout.frekuensiitemset', ['produks' => $this->getfrekuensiproduk(), 'text' => 'fpg', 'totaltransaksi' => $totaltrans]);
     }
 
@@ -211,6 +212,7 @@ class Fpgrowth extends Controller
         }
         arsort($temp);
         $data_objek = json_decode(json_encode($temp));
+        return $data_objek;
     }
     // end eliminasi nilai dibawah 6
 
@@ -218,18 +220,65 @@ class Fpgrowth extends Controller
     public function minimumsuport()
     {
         $totaltrans = Transaksi::count();
-        return view('layout.minimumsuport', ['transaksi' => $data_objek, 'totaltransaksi' => $totaltrans, 'text' => 'minimum']);
+        return view('layout.minimumsuport', ['transaksi' => $this->eliminasisuport(), 'totaltransaksi' => $totaltrans, 'text' => 'minimum']);
     }
     // end function minimum support
+    private function ambilnilaiconfidence()
+    {
+        $sumber = $this->eliminasisuport();
+        $frekuensi = $this->getfrekuensiproduk();
+        $data_array = (array) $frekuensi;
+        $frekuensitoar = [];
+        foreach ($data_array as $da => $v) {
+            $frekuensitoar[$v->kode_produk] = $v->frekuensi;
+        }
+        $tempat = [];
+        foreach ($sumber as $s => $val) {
+            $array = Str::of($s)->explode(',');
+            $tempat[] = [
+                "kode_produk" => $s,
+                "frekuensitr" => $val * Transaksi::count() / 100,
+                "frekuensipro" => $frekuensitoar[$array[0]],
+                "confidence" => number_format($val / $frekuensitoar[$array[0]] * Transaksi::count(), 2)
+            ];
+            $str = $array[1] . "," . $array[0];
+            $tempat[] = [
+                "kode_produk" => $str,
+                "frekuensitr" => $val * Transaksi::count() / 100,
+                "frekuensipro" => $frekuensitoar[$array[1]],
+                "confidence" => number_format($val / $frekuensitoar[$array[1]] * Transaksi::count(), 2)
+            ];
+        }
 
+        return $tempat;
+    }
     // start function confidence
     public function nilaiconfidence()
     {
-        $sumber = $this->hitungnilaisuport();
+        $data = $this->ambilnilaiconfidence();
+        return view('layout.confidence', ['transaksi' => $data, 'totaltransaksi' => Transaksi::count(), 'text' => 'confidence']);
+    }
 
-        var_dump($sumber);
-        die;
-        return view('layout.minimumsuport', ['transaksi' => $data_objek, 'totaltransaksi' => $totaltrans, 'text' => 'confidence']);
+    public function eliminasiconfidence()
+    {
+        $getdata = $this->ambilnilaiconfidence();
+        $databaru = [];
+        foreach ($getdata as $d) {
+            if ($d['confidence'] < 50) {
+            } else {
+                $databaru[] = [
+                    'kode_produk' => $d['kode_produk'],
+                    'frekuensitr' => $d['frekuensitr'],
+                    'frekuensipro' => $d['frekuensipro'],
+                    'confidence' => $d['confidence'],
+                ];
+            }
+        }
+        usort($databaru, function ($a, $b) {
+            // Mengubah string ke float, lalu membandingkan $b dengan $a untuk descending
+            return (float)$b['confidence'] <=> (float)$a['confidence'];
+        });
+        return view('layout.elconfidence', ['transaksi' => $databaru, 'totaltransaksi' => Transaksi::count(), 'text' => 'elconfidence']);
     }
     // end function confidence
 
