@@ -40,6 +40,11 @@ Route::middleware(['auth'])->group(function () {
 
     // start bagian itemset
     Route::get('/frekuensiitemset', [Fpgrowth::class, 'index']);
+    Route::get('/lanjutan', [Fpgrowth::class, 'lanjutan']);
+    Route::get('/duaitem', [Fpgrowth::class, 'duaitem']);
+    Route::get('/minimumsuport', [Fpgrowth::class, 'minimumsuport']);
+    Route::get('/nilaiconfidence', [Fpgrowth::class, 'nilaiconfidence']);
+
     // end bagian itemset
 
 });

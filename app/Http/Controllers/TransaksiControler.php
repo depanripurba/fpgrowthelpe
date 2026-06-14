@@ -14,7 +14,7 @@ class TransaksiControler extends Controller
         $trans = Transaksi::all();
         return view('layout.transaksi', ['transaksi' => $trans,'text'=>'transaksi']);
     }
-
+    
     public function Tambahtransaksi()
     {
         return view('layout.tambahtransaksi',['text'=>'transaksi']);

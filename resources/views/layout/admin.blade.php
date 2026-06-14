@@ -344,14 +344,32 @@
               </li>
                <li class="nav-item">
                 <a href="/frekuensiitemset" class="nav-link {{ $text==='fpg'?'active':'' }}"">
-                  <i class="nav-icon bi bi-ui-checks-grid"></i>
+                  <i class="nav-icon bi bi-table"></i>
                   <p>Frekuensi Item Set</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a href="/lanjutan" class="nav-link">
+                <a href="/lanjutan" class="nav-link {{ $text==='lanjutan'?'active':'' }}">
                   <i class="nav-icon bi bi-box-arrow-in-right"></i>
                   <p>Transaksi Lanjutan</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="/duaitem" class="nav-link {{ $text==='duaitem'?'active':'' }}">
+                  <i class="nav-icon bi bi-patch-check-fill"></i>
+                  <p>Kombinasi 2 Item</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="/minimumsuport" class="nav-link {{ $text==='minimum'?'active':'' }}">
+                  <i class="nav-icon bi bi-patch-check-fill"></i>
+                  <p>Minimum Support 6 %</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="/nilaiconfidence" class="nav-link {{ $text==='confidence'?'active':'' }}">
+                  <i class="nav-icon bi bi-patch-check-fill"></i>
+                  <p>Nilai Confidence 50 %</p>
                 </a>
               </li>
                <li class="nav-item">
